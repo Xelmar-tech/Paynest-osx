@@ -15,8 +15,8 @@ import {PermissionLib} from "@aragon/osx/core/permission/PermissionLib.sol";
 contract MyPluginSetup is PluginSetup {
     address public immutable pluginImplementation;
 
-    constructor(address _pluginImplementation) {
-        pluginImplementation = _pluginImplementation;
+    constructor() {
+        pluginImplementation = address(new MyPlugin());
     }
 
     function implementation() public view returns (address) {
