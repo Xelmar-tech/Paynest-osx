@@ -9,6 +9,7 @@ import {PluginRepoFactory} from "@aragon/osx/framework/plugin/repo/PluginRepoFac
 import {PluginRepo} from "@aragon/osx/framework/plugin/repo/PluginRepo.sol";
 import {PluginSetupProcessor} from "@aragon/osx/framework/plugin/setup/PluginSetupProcessor.sol";
 import {TestToken} from "../test/mocks/TestToken.sol";
+import {PaymentsPlugin} from "../src/PaymentsPlugin.sol";
 
 contract Deploy is Script {
     modifier broadcast() {
@@ -27,6 +28,9 @@ contract Deploy is Script {
         string memory myPluginEnsSubdomain = vm.envString(
             "MY_PLUGIN_REPO_ENS_SUBDOMAIN"
         );
+        string memory paymentsPluginEnsSubdomain = vm.envString(
+            "PAYMENTS_PLUGIN_REPO_ENS_SUBDOMAIN"
+        );
 
         // Deploy the plugin setup's
         (address myPluginSetup, PluginRepo myPluginRepo) = prepareMyPlugin(
@@ -35,16 +39,31 @@ contract Deploy is Script {
             myPluginEnsSubdomain
         );
 
+        // Deploy the payments plugin setup
+        (
+            address paymentsPluginSetup,
+            PluginRepo paymentsPluginRepo
+        ) = preparePaymentsPlugin(
+                maintainer,
+                PluginRepoFactory(pluginRepoFactory),
+                paymentsPluginEnsSubdomain
+            );
+
         console.log("Chain ID:", block.chainid);
 
         console.log("");
 
         console.log("Plugins");
         console.log("- MyPluginSetup:", myPluginSetup);
+        console.log("- PaymentsPluginSetup:", paymentsPluginSetup);
         console.log("");
 
         console.log("Plugin repositories");
         console.log("- MyPlugin repository:", address(myPluginRepo));
+        console.log(
+            "- PaymentsPlugin repository:",
+            address(paymentsPluginRepo)
+        );
     }
 
     function prepareMyPlugin(
@@ -63,6 +82,27 @@ contract Deploy is Script {
                 " ",
                 " "
             );
+        return (address(_pluginSetup), pluginRepo);
+    }
+
+    function preparePaymentsPlugin(
+        address maintainer,
+        PluginRepoFactory pluginRepoFactory,
+        string memory ensSubdomain
+    ) internal returns (address pluginSetup, PluginRepo) {
+        // Deploy plugin setup
+        PaymentsPlugin _pluginSetup = new PaymentsPlugin();
+
+        // Create plugin repo with first version
+        PluginRepo pluginRepo = pluginRepoFactory
+            .createPluginRepoWithFirstVersion(
+                ensSubdomain,
+                address(_pluginSetup),
+                maintainer,
+                "", // Replace with actual IPFS hash for metadata
+                "" // Replace with actual IPFS hash for build
+            );
+
         return (address(_pluginSetup), pluginRepo);
     }
 }
