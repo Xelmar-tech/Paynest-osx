@@ -5,11 +5,12 @@ import {Script, console} from "forge-std/Script.sol";
 import {DAO} from "@aragon/osx/core/dao/DAO.sol";
 
 import {MyPluginSetup} from "../src/setup/MyPluginSetup.sol";
+
 import {PluginRepoFactory} from "@aragon/osx/framework/plugin/repo/PluginRepoFactory.sol";
 import {PluginRepo} from "@aragon/osx/framework/plugin/repo/PluginRepo.sol";
 import {PluginSetupProcessor} from "@aragon/osx/framework/plugin/setup/PluginSetupProcessor.sol";
 import {TestToken} from "../test/mocks/TestToken.sol";
-import {PaymentsPlugin} from "../src/PaymentsPlugin.sol";
+import {PaymentsPluginSetup} from "../src/setup/PaymentsPluginSetup.sol";
 
 contract Deploy is Script {
     modifier broadcast() {
@@ -91,7 +92,7 @@ contract Deploy is Script {
         string memory ensSubdomain
     ) internal returns (address pluginSetup, PluginRepo) {
         // Deploy plugin setup
-        PaymentsPlugin _pluginSetup = new PaymentsPlugin();
+        PaymentsPluginSetup _pluginSetup = new PaymentsPluginSetup();
 
         // Create plugin repo with first version
         PluginRepo pluginRepo = pluginRepoFactory
@@ -99,8 +100,8 @@ contract Deploy is Script {
                 ensSubdomain,
                 address(_pluginSetup),
                 maintainer,
-                "", // Replace with actual IPFS hash for metadata
-                "" // Replace with actual IPFS hash for build
+                "0x0000000000000000000000000000000000000000000000000000000000000020", // Temporary metadata
+                "0x0000000000000000000000000000000000000000000000000000000000000020" // Temporary build metadata
             );
 
         return (address(_pluginSetup), pluginRepo);
