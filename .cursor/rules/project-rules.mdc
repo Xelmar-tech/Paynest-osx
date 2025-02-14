@@ -27,6 +27,14 @@ globs:
 - Use `make sync-tests` when adding new test files
 - Check test synchronization with `make check-tests` before committing changes
 
+# Aragon OSX Development Rules
+- Use `auth` as a function modifier in the function declaration, not inside the function body (e.g., `function foo() external auth(PERMISSION_ID)`)
+- When using permissions from DAO or plugins, always check the Aragon OSX documentation and existing implementations like Admin.sol for reference
+- Follow Aragon's permission system patterns:
+  - Grant permissions in the plugin setup contract
+  - Use proper permission IDs for actions
+  - Set up proper execute permissions when plugin needs to call DAO functions
+
 # Deployment Rules
 - Use `make pre-deploy-testnet` to simulate testnet deployment
 - Use `make deploy-testnet` for actual testnet deployment and verification
