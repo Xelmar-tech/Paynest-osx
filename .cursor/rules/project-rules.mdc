@@ -1,10 +1,35 @@
 ---
-description: 
+description: Project rules for Xelamar Payments
 globs: 
 ---
 
-# Your rule content
-- all project opperations should be done via the make file
-- always use the make file for running tests
-- always run tests after making changes to the code
+# Project Rules
+- All project operations should be done via the Makefile
+- Use the following make commands:
+  - `make test` - Run all unit tests locally
+  - `make test-coverage` - Generate HTML coverage report under ./report
+  - `make clean` - Clean build artifacts
+  - `make init` - Check and install dependencies
+  - `make sync-tests` - Scaffold or sync tree files into solidity tests
+  - `make check-tests` - Check if solidity files are out of sync
+  - `make markdown-tests` - Generate markdown file with test definitions
+
+# Testing Rules
+- Always run tests after making changes to the code using `make test`
+- Check test coverage using `make test-coverage` when adding new functionality
+- Keep test coverage above 80% for critical contract functionality
+- Write tests for both success and failure cases
+- Use the test utilities in test/util/ for common testing patterns
+
+# Development Rules
+- Initialize project dependencies with `make init` before starting development
+- Clean build artifacts with `make clean` when switching branches or after failed builds
+- Use `make sync-tests` when adding new test files
+- Check test synchronization with `make check-tests` before committing changes
+
+# Deployment Rules
+- Use `make pre-deploy-testnet` to simulate testnet deployment
+- Use `make deploy-testnet` for actual testnet deployment and verification
+- Use `make pre-deploy-prodnet` to simulate production deployment
+- Use `make deploy-prodnet` for actual production deployment and verification
 
