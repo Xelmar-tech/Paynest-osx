@@ -55,7 +55,10 @@ clean: ##    Clean the build artifacts
 .PHONY: test
 test: ##          Run unit tests, locally
 	forge test $(VERBOSITY)
-# forge test --no-match-path $(FORK_TEST_WILDCARD) $(VERBOSITY)
+
+.PHONY: test-fork
+test-fork: ##     Run tests on a fork of the testnet
+	forge test --fork-url $(TESTNET_RPC_URL) $(VERBOSITY)
 
 test-coverage: report/index.html ## Generate an HTML coverage report under ./report
 	@which open > /dev/null && open report/index.html || echo -n
