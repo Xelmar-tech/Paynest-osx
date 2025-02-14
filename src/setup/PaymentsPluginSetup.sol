@@ -5,6 +5,7 @@ import {IPluginSetup} from "@aragon/osx/framework/plugin/setup/IPluginSetup.sol"
 import {PluginSetup} from "@aragon/osx/framework/plugin/setup/PluginSetup.sol";
 import {PaymentsPlugin} from "../PaymentsPlugin.sol";
 import {IDAO} from "@aragon/osx/core/dao/IDAO.sol";
+import {DAO} from "@aragon/osx/core/dao/DAO.sol";
 import {createProxyAndCall} from "../util/proxy.sol";
 import {PermissionLib} from "@aragon/osx/core/permission/PermissionLib.sol";
 
@@ -44,7 +45,7 @@ contract PaymentsPluginSetup is PluginSetup {
 
         // Prepare permissions
         PermissionLib.MultiTargetPermission[]
-            memory permissions = new PermissionLib.MultiTargetPermission[](2);
+            memory permissions = new PermissionLib.MultiTargetPermission[](3);
 
         // Grant CREATE_PAYMENT_PERMISSION to the DAO
         permissions[0] = PermissionLib.MultiTargetPermission(
@@ -62,6 +63,15 @@ contract PaymentsPluginSetup is PluginSetup {
             _dao, // who
             address(0), // condition
             PaymentsPlugin(plugin).EDIT_PAYMENT_PERMISSION_ID() // permissionId
+        );
+
+        // Grant EXECUTE_PERMISSION on the DAO to the plugin
+        permissions[2] = PermissionLib.MultiTargetPermission(
+            PermissionLib.Operation.Grant,
+            _dao, // where
+            plugin, // who
+            PermissionLib.NO_CONDITION,
+            DAO(payable(_dao)).EXECUTE_PERMISSION_ID() // permissionId
         );
 
         preparedSetupData.helpers = new address[](0);
@@ -82,7 +92,7 @@ contract PaymentsPluginSetup is PluginSetup {
         returns (PermissionLib.MultiTargetPermission[] memory permissions)
     {
         // Prepare permissions to be revoked
-        permissions = new PermissionLib.MultiTargetPermission[](2);
+        permissions = new PermissionLib.MultiTargetPermission[](3);
 
         // Revoke CREATE_PAYMENT_PERMISSION from DAO
         permissions[0] = PermissionLib.MultiTargetPermission(
@@ -102,6 +112,13 @@ contract PaymentsPluginSetup is PluginSetup {
             PaymentsPlugin(_payload.plugin).EDIT_PAYMENT_PERMISSION_ID() // permissionId
         );
 
-        return permissions;
+        // Revoke EXECUTE_PERMISSION from plugin
+        permissions[2] = PermissionLib.MultiTargetPermission(
+            PermissionLib.Operation.Revoke,
+            _dao, // where
+            _payload.plugin, // who
+            PermissionLib.NO_CONDITION,
+            DAO(payable(_dao)).EXECUTE_PERMISSION_ID() // permissionId
+        );
     }
 }

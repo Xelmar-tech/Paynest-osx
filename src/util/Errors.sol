@@ -22,11 +22,14 @@ abstract contract Errors {
     error UserNotFound(string username);
     error IncompatibleUserAddress();
     error UsernameAlreadyClaimed(string username);
+    error EmptyUsernameNotAllowed();
 
     // Payment Errors
     error ActivePayment(string username);
     error InActivePayment(string username);
+    error NoActivePayment(string username);
     error InvalidAmount();
+    error InvalidEndDate();
     error InvalidStreamEnd();
     error NoPayoutDue();
     error NoEditAccess();
