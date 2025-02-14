@@ -1,0 +1,10 @@
+---
+description: 
+globs: 
+---
+
+# Your rule content
+- all project opperations should be done via the make file
+- always use the make file for running tests
+- always run tests after making changes to the code
+
