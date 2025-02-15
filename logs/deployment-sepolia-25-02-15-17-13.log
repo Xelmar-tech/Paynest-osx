@@ -1,0 +1,25 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.73s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/setup/PaymentsPluginSetup.sol:34:9:
+   |
+34 |         bytes calldata _installParameters
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Traces:
+  [6486817] → new DeployXelamar@0x9f7cF1d1F558E57ef88a59ac3D47214eF25B6A06
+    └─ ← [Return] 32283 bytes of code
+
+  [2995] DeployXelamar::run()
+    ├─ [0] VM::envUint("DEPLOYMENT_PRIVATE_KEY") [staticcall]
+    │   └─ ← [Revert] vm.envUint: failed parsing "\"0xa48bea9f13794150be33889ca8d87de38159b431723b5b1a5db740ac06c215b7\"" as type `uint256`: parser error:
+$DEPLOYMENT_PRIVATE_KEY
+^
+expected at least one digit
+    └─ ← [Revert] vm.envUint: failed parsing "\"0xa48bea9f13794150be33889ca8d87de38159b431723b5b1a5db740ac06c215b7\"" as type `uint256`: parser error:
+$DEPLOYMENT_PRIVATE_KEY
+^
+expected at least one digit
+
+

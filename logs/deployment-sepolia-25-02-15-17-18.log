@@ -1,0 +1,136 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.75s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/setup/PaymentsPluginSetup.sol:34:9:
+   |
+34 |         bytes calldata _installParameters
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Script ran successfully.
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+  
+  Chain ID: 11155111
+  Factory: 0x038EA7CBaC2a4928d14BDb280c75A4023D59a45a
+  
+  DAO: 0x57A9A6148ba10F1361e683F791AB96D1ACaEDD21
+  
+  Plugins
+  - Multisig plugin: 0x3C33B3cd506E557Aba1b93239892b7B479173E99
+  - Payments plugin: 0xA088566d59A15D65bc74e3f36cf97765fCA8A587
+  
+  Plugin repositories
+  - Multisig plugin repository (existing): 0x9e7956C8758470dE159481e5DD0d08F8B59217A2
+  - Payments plugin repository: 0xC6657D4cDFC16C81546c0b3a162A0c6cDfA808E2
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 2.285684908 gwei
+
+Estimated total gas used for script: 10971798
+
+Estimated amount required: 0.025078073102224584 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (5) contracts
+Start verifying contract `0xfAB7137fb7C84872607883680FF0EdbE1fFa3d3c` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0xfAB7137fb7C84872607883680FF0EdbE1fFa3d3c.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `6zdr9qx2n1mreslvzi4c5ckyctjkzuuhv7petaycdv2kz6m3i3`
+	URL: https://sepolia.etherscan.io/address/0xfab7137fb7c84872607883680ff0edbe1ffa3d3c
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0xbf531A64F879fF22f5526056b50328Ff88a38195` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/PaymentsPlugin.sol:PaymentsPlugin] 0xbf531A64F879fF22f5526056b50328Ff88a38195.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `daiwpupenh6duu6ew8wytqarzab1zvfh2vgkyyhuqnlr7q37ek`
+	URL: https://sepolia.etherscan.io/address/0xbf531a64f879ff22f5526056b50328ff88a38195
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0x038EA7CBaC2a4928d14BDb280c75A4023D59a45a` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+Constructor args: 00000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000014000000000000000000000000000000000000000000000000000000000000001800000000000000000000000009e7956c8758470de159481e5dd0d08f8b59217a200000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000002000000000000000000000000fab7137fb7c84872607883680ff0edbe1ffa3d3c0000000000000000000000007a62da7b56fb3bfcdf70e900787010bc4c9ca42e000000000000000000000000c24188a73dc09aa7c721f96ad8857b469c01dc9f00000000000000000000000007f49c49ce2a99cf7c28f66673d406386bdd8ff40000000000000000000000000000000000000000000000000000000000000001000000000000000000000000daef100c116e6d8358ac3987e40b8c33f0b2730f000000000000000000000000000000000000000000000000000000000000001978656c6d61722d7061796d656e74732d706c7567696e2d763200000000000000
+
+Submitting verification for [src/factory/XelamarDAOFactory.sol:XelamarDAOFactory] 0x038EA7CBaC2a4928d14BDb280c75A4023D59a45a.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `afzabdqswfspei2nbxdlgxqa8edjjaxunfk1irv3w6332bauqi`
+	URL: https://sepolia.etherscan.io/address/0x038ea7cbac2a4928d14bdb280c75a4023d59a45a
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0x57A9A6148ba10F1361e683F791AB96D1ACaEDD21` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+Constructor args: 0000000000000000000000002c9c5e8f559dbbec962f7ccd295dbc4183cd2168000000000000000000000000000000000000000000000000000000000000004000000000000000000000000000000000000000000000000000000000000000c4eafb8b060000000000000000000000000000000000000000000000000000000000000080000000000000000000000000038ea7cbac2a4928d14bdb280c75a4023d59a45a000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+
+Submitting verification for [lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy] 0x57A9A6148ba10F1361e683F791AB96D1ACaEDD21.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `e6wtedpz3wa68niptzx16j2apavmyywaurkrzu28bjpzuqyfkd`
+	URL: https://sepolia.etherscan.io/address/0x57a9a6148ba10f1361e683f791ab96d1acaedd21
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `NOTOK`
+Details: `Already Verified`
+Contract source code already verified
+Start verifying contract `0xA088566d59A15D65bc74e3f36cf97765fCA8A587` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+Constructor args: 000000000000000000000000bf531a64f879ff22f5526056b50328ff88a3819500000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000024c4d66de800000000000000000000000057a9a6148ba10f1361e683f791ab96d1acaedd2100000000000000000000000000000000000000000000000000000000
+
+Submitting verification for [lib/openzeppelin-contracts/contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy] 0xA088566d59A15D65bc74e3f36cf97765fCA8A587.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `9bxpdv4u44h3swsrch3hqyxpqmw37ycgtupjefdrn6rxr9hjy3`
+	URL: https://sepolia.etherscan.io/address/0xa088566d59a15d65bc74e3f36cf97765fca8a587
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `NOTOK`
+Details: `Already Verified`
+Contract source code already verified
+All (5) contracts were verified!
+
+Transactions saved to: /Users/abuusama/repos/llama-osx/broadcast/XelamarDAO.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /Users/abuusama/repos/llama-osx/cache/XelamarDAO.s.sol/11155111/run-latest.json
+

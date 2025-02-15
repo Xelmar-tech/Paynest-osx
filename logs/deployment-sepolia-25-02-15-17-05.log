@@ -1,0 +1,2 @@
+No files changed, compilation skipped
+[2m2025-02-15T17:05:05.499683Z[0m [31mERROR[0m [2mfoundry_compilers_artifacts_solc::sources[0m[2m:[0m [3merror[0m[2m=[0m"/Users/abuusama/repos/llama-osx/src/factory/SimpleDAOFactory.sol": No such file or directory (os error 2)

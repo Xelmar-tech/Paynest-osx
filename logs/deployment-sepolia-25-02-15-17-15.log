@@ -1,0 +1,57 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.80s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/setup/PaymentsPluginSetup.sol:34:9:
+   |
+34 |         bytes calldata _installParameters
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Traces:
+  [6486817] → new DeployXelamar@0x9f7cF1d1F558E57ef88a59ac3D47214eF25B6A06
+    └─ ← [Return] 32283 bytes of code
+
+  [3238986] DeployXelamar::run()
+    ├─ [0] VM::envUint("DEPLOYMENT_PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return] 
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+    ├─ [0] console::log("Deploying from:", 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envString("MULTISIG_MEMBERS_JSON_FILE_NAME") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::projectRoot() [staticcall]
+    │   └─ ← [Return] "/Users/abuusama/repos/llama-osx"
+    ├─ [0] VM::readFile("/Users/abuusama/repos/llama-osx/script/multisig-members.json") [staticcall]
+    │   └─ ← [Return] <file>
+    ├─ [0] VM::keyExistsJson("<JSON file>", "$.members") [staticcall]
+    │   └─ ← [Return] true
+    ├─ [0] VM::parseJsonAddressArray("<stringified JSON>", "$.members") [staticcall]
+    │   └─ ← [Return] [0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f]
+    ├─ [3187581] → new PaymentsPluginSetup@0xfAB7137fb7C84872607883680FF0EdbE1fFa3d3c
+    │   ├─ [2114996] → new PaymentsPlugin@0xbf531A64F879fF22f5526056b50328Ff88a38195
+    │   │   ├─ emit Initialized(version: 255)
+    │   │   └─ ← [Return] 10446 bytes of code
+    │   └─ ← [Return] 5188 bytes of code
+    ├─ [0] VM::envUint("MIN_APPROVALS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envString("PAYMENTS_PLUGIN_REPO_ENS_SUBDOMAIN") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("MULTISIG_PLUGIN_REPO_ADDRESS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envUint("MULTISIG_PLUGIN_RELEASE") [staticcall]
+    │   └─ ← [Revert] vm.envUint: failed parsing "\"1\"" as type `uint256`: parser error:
+$MULTISIG_PLUGIN_RELEASE
+^
+expected at least one digit
+    └─ ← [Revert] vm.envUint: failed parsing "\"1\"" as type `uint256`: parser error:
+$MULTISIG_PLUGIN_RELEASE
+^
+expected at least one digit
+
+
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f

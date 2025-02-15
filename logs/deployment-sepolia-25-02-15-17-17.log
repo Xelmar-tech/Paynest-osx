@@ -1,0 +1,9 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.87s
+Compiler run successful with warnings:
+Warning (5667): Unused function parameter. Remove or comment out the variable name to silence this warning.
+  --> src/setup/PaymentsPluginSetup.sol:34:9:
+   |
+34 |         bytes calldata _installParameters
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
