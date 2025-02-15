@@ -1,0 +1,34 @@
+Compiling 105 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.73s
+Compiler run successful!
+Script ran successfully.
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+  
+  Chain ID: 11155111
+  Factory: 0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240
+  
+  DAO: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7
+  
+  Plugins
+  - Multisig plugin: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162
+  - Payments plugin: 0x05f7eb02623eCd6F85c914aBe09F8Fcc5E132424
+  
+  Plugin repositories
+  - Multisig plugin repository (existing): 0x9e7956C8758470dE159481e5DD0d08F8B59217A2
+  - Payments plugin repository: 0x3c9592398A8D6125784D147d5807771878665fb2
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 2.668653418 gwei
+
+Estimated total gas used for script: 11136510
+
+Estimated amount required: 0.02971948547609118 ETH
+
+==========================

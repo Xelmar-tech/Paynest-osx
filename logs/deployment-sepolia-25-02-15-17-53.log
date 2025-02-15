@@ -1,0 +1,176 @@
+Compiling 105 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.82s
+Compiler run successful!
+Traces:
+  [6612617] → new DeployXelamar@0x9f7cF1d1F558E57ef88a59ac3D47214eF25B6A06
+    └─ ← [Return] 32911 bytes of code
+
+  [6948756] DeployXelamar::run()
+    ├─ [0] VM::envUint("DEPLOYMENT_PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return] 
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+    ├─ [0] console::log("Deploying from:", 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envString("MULTISIG_MEMBERS_JSON_FILE_NAME") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::projectRoot() [staticcall]
+    │   └─ ← [Return] "/Users/abuusama/repos/llama-osx"
+    ├─ [0] VM::readFile("/Users/abuusama/repos/llama-osx/script/multisig-members.json") [staticcall]
+    │   └─ ← [Return] <file>
+    ├─ [0] VM::keyExistsJson("<JSON file>", "$.members") [staticcall]
+    │   └─ ← [Return] true
+    ├─ [0] VM::parseJsonAddressArray("<stringified JSON>", "$.members") [staticcall]
+    │   └─ ← [Return] [0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f]
+    ├─ [3313238] → new PaymentsPluginSetup@0xcaA49E0B81257cA0Fb4CA9749f8Ffcf421AeDC10
+    │   ├─ [2114996] → new PaymentsPlugin@0xcA4d5d2a3BF157382ccAb500c722f79Ff36d2872
+    │   │   ├─ emit Initialized(version: 255)
+    │   │   └─ ← [Return] 10446 bytes of code
+    │   └─ ← [Return] 5816 bytes of code
+    ├─ [0] VM::envUint("MIN_APPROVALS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envString("PAYMENTS_PLUGIN_REPO_ENS_SUBDOMAIN") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("MULTISIG_PLUGIN_REPO_ADDRESS") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envUint("MULTISIG_PLUGIN_RELEASE") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envUint("MULTISIG_PLUGIN_BUILD") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("DAO_FACTORY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("PLUGIN_SETUP_PROCESSOR") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envAddress("PLUGIN_REPO_FACTORY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [1839692] → new XelamarDAOFactory@0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240
+    │   └─ ← [Return] 8177 bytes of code
+    ├─ [1707520] XelamarDAOFactory::deployOnce()
+    │   ├─ [260] DAOFactory::daoBase() [staticcall]
+    │   │   └─ ← [Return] DAO: [0x2C9c5e8F559DBBEc962f7CCd295DBc4183cd2168]
+    │   ├─ [449875] → new ERC1967Proxy@0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7
+    │   │   ├─ emit Upgraded(implementation: DAO: [0x2C9c5e8F559DBBEc962f7CCd295DBc4183cd2168])
+    │   │   ├─ [281333] DAO::initialize(0x, XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], 0x0000000000000000000000000000000000000000, "") [delegatecall]
+    │   │   │   ├─ emit MetadataSet(metadata: 0x)
+    │   │   │   ├─ emit TrustedForwarderSet(forwarder: 0x0000000000000000000000000000000000000000)
+    │   │   │   ├─ emit NewURI(daoURI: "")
+    │   │   │   ├─ emit Granted(permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Initialized(version: 2)
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 699 bytes of code
+    │   ├─ [681] ERC1967Proxy::fallback() [staticcall]
+    │   │   ├─ [286] DAO::ROOT_PERMISSION_ID() [delegatecall]
+    │   │   │   └─ ← [Return] 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33
+    │   │   └─ ← [Return] 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33
+    │   ├─ [680] ERC1967Proxy::fallback() [staticcall]
+    │   │   ├─ [285] DAO::UPGRADE_DAO_PERMISSION_ID() [delegatecall]
+    │   │   │   └─ ← [Return] 0x1f53edd44352e5d15bad2b29233baa93bcd595e09457780bc7c5445bbbe751cc
+    │   │   └─ ← [Return] 0x1f53edd44352e5d15bad2b29233baa93bcd595e09457780bc7c5445bbbe751cc
+    │   ├─ [636] ERC1967Proxy::fallback() [staticcall]
+    │   │   ├─ [241] DAO::REGISTER_STANDARD_CALLBACK_PERMISSION_ID() [delegatecall]
+    │   │   │   └─ ← [Return] 0xfaf505be9907aa6951c2ebe5b0312f4980e14f21912ed355372103cc8bd683bc
+    │   │   └─ ← [Return] 0xfaf505be9907aa6951c2ebe5b0312f4980e14f21912ed355372103cc8bd683bc
+    │   ├─ [79568] ERC1967Proxy::fallback(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], [SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33 }), SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0x1f53edd44352e5d15bad2b29233baa93bcd595e09457780bc7c5445bbbe751cc }), SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0xfaf505be9907aa6951c2ebe5b0312f4980e14f21912ed355372103cc8bd683bc })])
+    │   │   ├─ [79110] DAO::applySingleTargetPermissions(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], [SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33 }), SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0x1f53edd44352e5d15bad2b29233baa93bcd595e09457780bc7c5445bbbe751cc }), SingleTargetPermission({ operation: 0, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, permissionId: 0xfaf505be9907aa6951c2ebe5b0312f4980e14f21912ed355372103cc8bd683bc })]) [delegatecall]
+    │   │   │   ├─ emit Granted(permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Granted(permissionId: 0x1f53edd44352e5d15bad2b29233baa93bcd595e09457780bc7c5445bbbe751cc, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Granted(permissionId: 0xfaf505be9907aa6951c2ebe5b0312f4980e14f21912ed355372103cc8bd683bc, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 
+    │   ├─ [681] ERC1967Proxy::fallback() [staticcall]
+    │   │   ├─ [286] DAO::ROOT_PERMISSION_ID() [delegatecall]
+    │   │   │   └─ ← [Return] 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33
+    │   │   └─ ← [Return] 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33
+    │   ├─ [27161] ERC1967Proxy::fallback(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33)
+    │   │   ├─ [26757] DAO::grant(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33) [delegatecall]
+    │   │   │   ├─ emit Granted(permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 
+    │   ├─ [240] PluginSetupProcessor::APPLY_INSTALLATION_PERMISSION_ID() [staticcall]
+    │   │   └─ ← [Return] 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548
+    │   ├─ [27161] ERC1967Proxy::fallback(PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548)
+    │   │   ├─ [26757] DAO::grant(PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548) [delegatecall]
+    │   │   │   ├─ emit Granted(permissionId: 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548, here: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], where: PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], who: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 
+    │   ├─ [503785] PluginSetupProcessor::prepareInstallation(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], PrepareInstallationParams({ pluginSetupRef: PluginSetupRef({ versionTag: Tag({ release: 1, build: 2 }), pluginSetupRepo: 0x9e7956C8758470dE159481e5DD0d08F8B59217A2 }), data: 0x0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000000000000000daef100c116e6d8358ac3987e40b8c33f0b2730f }))
+    │   │   ├─ [7455] ERC1967Proxy::fallback(0x9e7956C8758470dE159481e5DD0d08F8B59217A2) [staticcall]
+    │   │   │   ├─ [2569] PluginRepoRegistry::entries(0x9e7956C8758470dE159481e5DD0d08F8B59217A2) [delegatecall]
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [13871] 0x9e7956C8758470dE159481e5DD0d08F8B59217A2::getVersion(Tag({ release: 1, build: 2 })) [staticcall]
+    │   │   │   ├─ [8952] PluginRepo::getVersion(Tag({ release: 1, build: 2 })) [delegatecall]
+    │   │   │   │   └─ ← [Return] Version({ tag: Tag({ release: 1, build: 2 }), pluginSetup: 0x360586dB62DA31327B2462BA27bEb3e48ebbf396, buildMetadata: 0x697066733a2f2f })
+    │   │   │   └─ ← [Return] Version({ tag: Tag({ release: 1, build: 2 }), pluginSetup: 0x360586dB62DA31327B2462BA27bEb3e48ebbf396, buildMetadata: 0x697066733a2f2f })
+    │   │   ├─ [422924] 0x360586dB62DA31327B2462BA27bEb3e48ebbf396::prepareInstallation(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], 0x0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000000000000000daef100c116e6d8358ac3987e40b8c33f0b2730f)
+    │   │   │   ├─ [382684] → new <unknown>@0x1C35bd0EC678007efC1b1e65FBEA934918F99162
+    │   │   │   │   ├─ emit Upgraded(implementation: Multisig: [0x3225bb58d6e483B0A2E91265c2b679005F578812])
+    │   │   │   │   ├─ [187327] Multisig::initialize(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], [0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f], MultisigSettings({ onlyListed: true, minApprovals: 1 })) [delegatecall]
+    │   │   │   │   │   ├─ emit MembersAdded(members: [0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f])
+    │   │   │   │   │   ├─ emit MultisigSettingsUpdated(onlyListed: true, minApprovals: 1)
+    │   │   │   │   │   ├─ emit Initialized(version: 1)
+    │   │   │   │   │   └─ ← [Stop] 
+    │   │   │   │   └─ ← [Return] 833 bytes of code
+    │   │   │   ├─ [263] Multisig::UPDATE_MULTISIG_SETTINGS_PERMISSION_ID() [staticcall]
+    │   │   │   │   └─ ← [Return] 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad
+    │   │   │   ├─ [240] Multisig::UPGRADE_PLUGIN_PERMISSION_ID() [staticcall]
+    │   │   │   │   └─ ← [Return] 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5
+    │   │   │   ├─ [659] ERC1967Proxy::fallback() [staticcall]
+    │   │   │   │   ├─ [264] DAO::EXECUTE_PERMISSION_ID() [delegatecall]
+    │   │   │   │   │   └─ ← [Return] 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d
+    │   │   │   │   └─ ← [Return] 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d
+    │   │   │   └─ ← [Return] 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, PreparedSetupData({ helpers: [], permissions: [MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })] })
+    │   │   ├─ emit InstallationPrepared(sender: XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], dao: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], preparedSetupId: 0xfc4504c6ca25652a493190b16336ad432b6f2e3f712efafeee273df6b446fecc, pluginSetupRepo: 0x9e7956C8758470dE159481e5DD0d08F8B59217A2, versionTag: Tag({ release: 1, build: 2 }), data: 0x0000000000000000000000000000000000000000000000000000000000000060000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001000000000000000000000000daef100c116e6d8358ac3987e40b8c33f0b2730f, plugin: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, preparedSetupData: PreparedSetupData({ helpers: [], permissions: [MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })] }))
+    │   │   └─ ← [Return] 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, PreparedSetupData({ helpers: [], permissions: [MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })] })
+    │   ├─ [135307] PluginSetupProcessor::applyInstallation(ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], ApplyInstallationParams({ pluginSetupRef: PluginSetupRef({ versionTag: Tag({ release: 1, build: 2 }), pluginSetupRepo: 0x9e7956C8758470dE159481e5DD0d08F8B59217A2 }), plugin: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, permissions: [MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })], helpersHash: 0x569e75fc77c1a856f6daaf9e69d8a9566ca34aa47f9133711ce065a571af0cfd }))
+    │   │   ├─ [2090] ERC1967Proxy::fallback(PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548, 0x) [staticcall]
+    │   │   │   ├─ [1671] DAO::hasPermission(PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], XelamarDAOFactory: [0xeE10DB6AE7e081eC718ad124e0AED7D2D3945240], 0xf796b89427c6552c1ac705d833bfb7909f8eb5ce502c1db97f85fabc6ad83548, 0x) [delegatecall]
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   └─ ← [Return] true
+    │   │   ├─ [80122] ERC1967Proxy::fallback([MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })])
+    │   │   │   ├─ [79634] DAO::applyMultiTargetPermissions([MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad }), MultiTargetPermission({ operation: 0, where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, condition: 0x0000000000000000000000000000000000000000, permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5 }), MultiTargetPermission({ operation: 0, where: 0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7, who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: 0x0000000000000000000000000000000000000000, permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d })]) [delegatecall]
+    │   │   │   │   ├─ emit Granted(permissionId: 0xb1750e46d35a0069c8465b8643e7838d2149a842a2db8ee233d9835590040cad, here: PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   ├─ emit Granted(permissionId: 0x821b6e3a557148015a918c89e5d092e878a69854a2d1a410635f771bd5a8a3f5, here: PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], where: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, who: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   ├─ emit Granted(permissionId: 0xbf04b4486c9663d805744005c3da000eda93de6e3308a4a7a812eb565327b78d, here: PluginSetupProcessor: [0xC24188a73dc09aA7C721f96Ad8857B469C01dC9f], where: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], who: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 
+    │   │   ├─ emit InstallationApplied(dao: ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], plugin: 0x1C35bd0EC678007efC1b1e65FBEA934918F99162, preparedSetupId: 0xfc4504c6ca25652a493190b16336ad432b6f2e3f712efafeee273df6b446fecc, appliedSetupId: 0x0bfdbd9bdced26178f57476678aa16f26844dd61596f9ebffee2cecbb4f706e0)
+    │   │   └─ ← [Stop] 
+    │   ├─ [381163] PluginRepoFactory::createPluginRepoWithFirstVersion("xelmar-payments-plugin-v2", PaymentsPluginSetup: [0xcaA49E0B81257cA0Fb4CA9749f8Ffcf421AeDC10], ERC1967Proxy: [0xe9422a9BD6418B7aa1854da1F0b7186664FfB2F7], 0x307830303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303230, 0x307830303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303230)
+    │   │   ├─ [292552] → new <unknown>@0x3c9592398A8D6125784D147d5807771878665fb2
+    │   │   │   ├─ emit Upgraded(implementation: PluginRepo: [0x917C2Ab96c40aDEfD08d240409485D8b606423E3])
+    │   │   │   ├─ [100399] PluginRepo::initialize(PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4]) [delegatecall]
+    │   │   │   │   ├─ emit Granted(permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0x3c9592398A8D6125784D147d5807771878665fb2, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   ├─ emit Granted(permissionId: 0xa0885006fe6672eeafd1deca6c67bcdc6dd79cfe2b157a98539ddf73cd8c04ea, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0x3c9592398A8D6125784D147d5807771878665fb2, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   ├─ emit Granted(permissionId: 0x5aa4f06bdc18535eff05128093a2315c2c960a2722e20021cbff28da04760f5b, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0x3c9592398A8D6125784D147d5807771878665fb2, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   │   ├─ emit Initialized(version: 1)
+    │   │   │   │   └─ ← [Stop] 
+    │   │   │   └─ ← [Return] 833 bytes of code
+    │   │   ├─ [49263] ERC1967Proxy::fallback("xelmar-payments-plugin-v2", 0x3c9592398A8D6125784D147d5807771878665fb2)
+    │   │   │   ├─ [48855] PluginRepoRegistry::registerPluginRepo("xelmar-payments-plugin-v2", 0x3c9592398A8D6125784D147d5807771878665fb2) [delegatecall]
+    │   │   │   │   ├─ [8638] ERC1967Proxy::fallback(ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], 0x055973dfb6d3b3cd890dde3a801f5427fa973864752b6d2a1ae61cbd5ae5dc09, 0xfdb9df5500000000000000000000000000000000000000000000000000000000000000400000000000000000000000003c9592398a8d6125784d147d5807771878665fb2000000000000000000000000000000000000000000000000000000000000001978656c6d61722d7061796d656e74732d706c7567696e2d763200000000000000) [staticcall]
+    │   │   │   │   │   ├─ [3701] DAO::hasPermission(ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], 0x055973dfb6d3b3cd890dde3a801f5427fa973864752b6d2a1ae61cbd5ae5dc09, 0xfdb9df5500000000000000000000000000000000000000000000000000000000000000400000000000000000000000003c9592398a8d6125784d147d5807771878665fb2000000000000000000000000000000000000000000000000000000000000001978656c6d61722d7061796d656e74732d706c7567696e2d763200000000000000) [delegatecall]
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   ├─ [22490] ERC1967Proxy::fallback(0x4d97f7048a8bcc8f874bd5738e83071a338633e6c7790939d7039777e11d833b, 0x3c9592398A8D6125784D147d5807771878665fb2)
+    │   │   │   │   │   ├─ [17594] ENSSubdomainRegistrar::registerSubnode(0x4d97f7048a8bcc8f874bd5738e83071a338633e6c7790939d7039777e11d833b, 0x3c9592398A8D6125784D147d5807771878665fb2) [delegatecall]
+    │   │   │   │   │   │   ├─ [4114] ERC1967Proxy::fallback(ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7], ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], 0xbbdfd23f099d7ed9f535e0f97d2123efb1332b16e023b8359b3b879eaecd3c14, 0x89bb41454d97f7048a8bcc8f874bd5738e83071a338633e6c7790939d7039777e11d833b0000000000000000000000003c9592398a8d6125784d147d5807771878665fb2) [staticcall]
+    │   │   │   │   │   │   │   ├─ [3689] DAO::hasPermission(ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7], ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], 0xbbdfd23f099d7ed9f535e0f97d2123efb1332b16e023b8359b3b879eaecd3c14, 0x89bb41454d97f7048a8bcc8f874bd5738e83071a338633e6c7790939d7039777e11d833b0000000000000000000000003c9592398a8d6125784d147d5807771878665fb2) [delegatecall]
+    │   │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   ├─ [2797] ENSRegistryWithFallback::owner(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8) [staticcall]
+    │   │   │   │   │   │   │   └─ ← [Return] ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7]
+    │   │   │   │   │   │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   │   │   │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   │   │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    └─ ← [Revert] AlreadyRegistered(0x2a56c130795b08f62b844511a5f77e2fef036d2acf72c08f92484e24b099a3e8, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+
+
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f

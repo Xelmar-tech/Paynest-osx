@@ -1,0 +1,9 @@
+Compiling 105 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.71s
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+  --> script/XelamarDAO.s.sol:52:5:
+   |
+52 |     function getDAOParameters()
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+

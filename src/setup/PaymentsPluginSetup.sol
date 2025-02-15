@@ -26,7 +26,7 @@ contract PaymentsPluginSetup is PluginSetup {
 
     /// @notice Prepares the installation of PaymentsPlugin.
     /// @param _dao The DAO address.
-    /// @param _installParameters Empty bytes array as no parameters are needed.
+    /// @param _installParameters ABI encoded address[] of payment managers
     /// @return plugin The address of the deployed plugin proxy.
     /// @return preparedSetupData Setup data with permissions for payment management.
     function prepareInstallation(
@@ -37,15 +37,27 @@ contract PaymentsPluginSetup is PluginSetup {
         override
         returns (address plugin, PreparedSetupData memory preparedSetupData)
     {
+        // Decode payment managers from installation parameters
+        address[] memory paymentManagers = abi.decode(
+            _installParameters,
+            (address[])
+        );
+
         // Deploy plugin proxy and initialize it
         plugin = createProxyAndCall(
             implementation(),
             abi.encodeWithSelector(PaymentsPlugin.initialize.selector, _dao)
         );
 
+        // Calculate total number of permissions needed
+        // 3 base permissions + 2 permissions per payment manager (create and edit)
+        uint256 permissionLength = 3 + (paymentManagers.length * 2);
+
         // Prepare permissions
         PermissionLib.MultiTargetPermission[]
-            memory permissions = new PermissionLib.MultiTargetPermission[](3);
+            memory permissions = new PermissionLib.MultiTargetPermission[](
+                permissionLength
+            );
 
         // Grant CREATE_PAYMENT_PERMISSION to the DAO
         permissions[0] = PermissionLib.MultiTargetPermission(
@@ -73,6 +85,27 @@ contract PaymentsPluginSetup is PluginSetup {
             PermissionLib.NO_CONDITION,
             DAO(payable(_dao)).EXECUTE_PERMISSION_ID() // permissionId
         );
+
+        // Grant permissions to each payment manager
+        for (uint256 i = 0; i < paymentManagers.length; i++) {
+            // Grant CREATE_PAYMENT_PERMISSION
+            permissions[3 + (i * 2)] = PermissionLib.MultiTargetPermission(
+                PermissionLib.Operation.Grant,
+                plugin, // where
+                paymentManagers[i], // who
+                address(0), // condition
+                PaymentsPlugin(plugin).CREATE_PAYMENT_PERMISSION_ID() // permissionId
+            );
+
+            // Grant EDIT_PAYMENT_PERMISSION
+            permissions[3 + (i * 2) + 1] = PermissionLib.MultiTargetPermission(
+                PermissionLib.Operation.Grant,
+                plugin, // where
+                paymentManagers[i], // who
+                address(0), // condition
+                PaymentsPlugin(plugin).EDIT_PAYMENT_PERMISSION_ID() // permissionId
+            );
+        }
 
         preparedSetupData.helpers = new address[](0);
         preparedSetupData.permissions = permissions;

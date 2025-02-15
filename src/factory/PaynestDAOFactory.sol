@@ -19,6 +19,8 @@ struct DAOParameters {
     // Multisig settings
     uint16 minApprovals;
     address[] multisigMembers;
+    // Payments plugin settings
+    address[] paymentManagers;
 }
 
 /// @notice Contains the artifacts that resulted from running a deployment
@@ -102,7 +104,12 @@ contract PaynestDAOFactory {
             (
                 deployment.paymentsPlugin,
                 preparedPaymentsSetupData
-            ) = preparePaymentsPlugin(dao, paymentsPluginRepo, repoTag);
+            ) = preparePaymentsPlugin(
+                dao,
+                paymentsPluginRepo,
+                repoTag,
+                parameters
+            );
 
             applyPluginInstallation(
                 dao,
@@ -192,13 +199,14 @@ contract PaynestDAOFactory {
     function preparePaymentsPlugin(
         DAO dao,
         PluginRepo pluginRepo,
-        PluginRepo.Tag memory repoTag
+        PluginRepo.Tag memory repoTag,
+        DAOParameters calldata parameters
     )
         internal
         returns (PaymentsPluginSetup, IPluginSetup.PreparedSetupData memory)
     {
-        // Empty settings since our plugin doesn't need any initialization parameters
-        bytes memory settingsData = "";
+        // Encode the payment managers for initialization
+        bytes memory settingsData = abi.encode(parameters.paymentManagers);
 
         (
             address plugin,

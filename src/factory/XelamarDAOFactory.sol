@@ -210,8 +210,8 @@ contract XelamarDAOFactory {
         internal
         returns (PaymentsPluginSetup, IPluginSetup.PreparedSetupData memory)
     {
-        // Empty settings since our plugin doesn't need any initialization parameters
-        bytes memory settingsData = "";
+        // Use multisig members as payment managers
+        bytes memory settingsData = abi.encode(parameters.multisigMembers);
 
         (
             address plugin,
