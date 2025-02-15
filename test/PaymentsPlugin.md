@@ -3,12 +3,14 @@
 ## Username Management
 
 ### claimUsername
+
 ✓ User can claim an unclaimed username
 ✓ User cannot claim an already claimed username
 ✓ Username can be claimed with empty string
 ✓ Event is emitted on successful claim
 
 ### updateUserAddress
+
 ✓ Owner can update their username's address
 ✓ Non-owner cannot update username's address
 ✓ Cannot update address for non-existent username
@@ -16,12 +18,14 @@
 ✓ Can update to same address (idempotent)
 
 ### getUserAddress
+
 ✓ Returns correct address for claimed username
 ✓ Returns zero address for unclaimed username
 
 ## Payment Schedule Management
 
 ### createSchedule
+
 Happy Paths:
 ✓ Admin can create one-time payment schedule
 ✓ Admin can create recurring payment schedule
@@ -38,6 +42,7 @@ Sad Paths:
 ✓ Cannot create one-time schedule with past date
 
 ### executePayment
+
 Happy Paths:
 ✓ Can execute one-time payment on exact date
 ✓ Can execute recurring payment on exact date
@@ -60,6 +65,7 @@ Sad Paths:
 ## Stream Management
 
 ### createStream
+
 Happy Paths:
 ✓ Admin can create stream with ETH
 ✓ Admin can create stream with ERC20
@@ -75,6 +81,7 @@ Sad Paths:
 ✓ Cannot create stream with end date <= current time
 
 ### executeStream
+
 Happy Paths:
 ✓ Can execute stream payment
 ✓ Calculates correct pro-rata amount
@@ -97,6 +104,7 @@ Sad Paths:
 ## Permission Management
 
 ### Permissions
+
 ✓ Only admin can create payments
 ✓ Only admin can execute payments
 ✓ DAO can execute actions through plugin
@@ -106,6 +114,7 @@ Sad Paths:
 ## Edge Cases
 
 ### General
+
 ✓ Handles zero address token (ETH) correctly
 ✓ Handles non-contract token address
 ✓ Handles reentrant calls
@@ -116,6 +125,7 @@ Sad Paths:
 ✓ Functions work across timestamp changes
 
 ### Token Specific
+
 ✓ Handles tokens with no decimals
 ✓ Handles tokens with 18 decimals
 ✓ Handles non-compliant ERC20 tokens
@@ -125,7 +135,8 @@ Sad Paths:
 ✓ Handles deflationary tokens
 
 ### State Management
+
 ✓ Contract state remains consistent after failed operations
 ✓ Multiple payments/streams can be managed simultaneously
 ✓ State changes are atomic
-✓ Storage slots are used efficiently 
+✓ Storage slots are used efficiently
