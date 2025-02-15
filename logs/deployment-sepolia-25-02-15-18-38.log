@@ -1,0 +1,65 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.58s
+Compiler run successful!
+Traces:
+  [5827823] → new DeployPaymentsPlugin@0x9f7cF1d1F558E57ef88a59ac3D47214eF25B6A06
+    └─ ← [Return] 28993 bytes of code
+
+  [3816269] DeployPaymentsPlugin::run()
+    ├─ [0] VM::envUint("DEPLOYMENT_PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return] 
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+    ├─ [0] console::log("Deploying from:", 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [3376868] → new PaymentsPluginSetup@0x4F801759187e64873f08fA250d5393aC34f5bdff
+    │   ├─ [2114996] → new PaymentsPlugin@0x1046f993386cF98122927B525ba84552E0CfE4EC
+    │   │   ├─ emit Initialized(version: 255)
+    │   │   └─ ← [Return] 10446 bytes of code
+    │   └─ ← [Return] 6134 bytes of code
+    ├─ [0] console::log("PaymentsPluginSetup deployed at:", PaymentsPluginSetup: [0x4F801759187e64873f08fA250d5393aC34f5bdff]) [staticcall]
+    │   └─ ← [Stop] 
+    ├─ [0] VM::envAddress("PLUGIN_REPO_FACTORY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envString("PAYMENTS_PLUGIN_REPO_ENS_SUBDOMAIN") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+    ├─ [390663] PluginRepoFactory::createPluginRepoWithFirstVersion("xelmar-payments-plugin-v5", PaymentsPluginSetup: [0x4F801759187e64873f08fA250d5393aC34f5bdff], 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f, 0x307830303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303230, 0x307830303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303230)
+    │   ├─ [295052] → new <unknown>@0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e
+    │   │   ├─ emit Upgraded(implementation: PluginRepo: [0x917C2Ab96c40aDEfD08d240409485D8b606423E3])
+    │   │   ├─ [100399] PluginRepo::initialize(PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4]) [delegatecall]
+    │   │   │   ├─ emit Granted(permissionId: 0x815fe80e4b37c8582a3b773d1d7071f983eacfd56b5965db654f3087c25ada33, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Granted(permissionId: 0xa0885006fe6672eeafd1deca6c67bcdc6dd79cfe2b157a98539ddf73cd8c04ea, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Granted(permissionId: 0x5aa4f06bdc18535eff05128093a2315c2c960a2722e20021cbff28da04760f5b, here: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], where: 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e, who: PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], condition: SHA-256: [0x0000000000000000000000000000000000000002])
+    │   │   │   ├─ emit Initialized(version: 1)
+    │   │   │   └─ ← [Stop] 
+    │   │   └─ ← [Return] 833 bytes of code
+    │   ├─ [53763] ERC1967Proxy::fallback("xelmar-payments-plugin-v5", 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e)
+    │   │   ├─ [48855] PluginRepoRegistry::registerPluginRepo("xelmar-payments-plugin-v5", 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e) [delegatecall]
+    │   │   │   ├─ [8638] ERC1967Proxy::fallback(ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], 0x055973dfb6d3b3cd890dde3a801f5427fa973864752b6d2a1ae61cbd5ae5dc09, 0xfdb9df550000000000000000000000000000000000000000000000000000000000000040000000000000000000000000abafe3da1406138dba10715ef4ebe22e4945341e000000000000000000000000000000000000000000000000000000000000001978656c6d61722d7061796d656e74732d706c7567696e2d763500000000000000) [staticcall]
+    │   │   │   │   ├─ [3701] DAO::hasPermission(ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], PluginRepoFactory: [0x07f49c49Ce2A99CF7C28F66673d406386BDD8Ff4], 0x055973dfb6d3b3cd890dde3a801f5427fa973864752b6d2a1ae61cbd5ae5dc09, 0xfdb9df550000000000000000000000000000000000000000000000000000000000000040000000000000000000000000abafe3da1406138dba10715ef4ebe22e4945341e000000000000000000000000000000000000000000000000000000000000001978656c6d61722d7061796d656e74732d706c7567696e2d763500000000000000) [delegatecall]
+    │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   └─ ← [Return] true
+    │   │   │   ├─ [22490] ERC1967Proxy::fallback(0x6ae9a9e6cf7aef2c23773cf213c1b883714b48057c5a9571f555836523285f7a, 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e)
+    │   │   │   │   ├─ [17594] ENSSubdomainRegistrar::registerSubnode(0x6ae9a9e6cf7aef2c23773cf213c1b883714b48057c5a9571f555836523285f7a, 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e) [delegatecall]
+    │   │   │   │   │   ├─ [4114] ERC1967Proxy::fallback(ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7], ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], 0xbbdfd23f099d7ed9f535e0f97d2123efb1332b16e023b8359b3b879eaecd3c14, 0x89bb41456ae9a9e6cf7aef2c23773cf213c1b883714b48057c5a9571f555836523285f7a000000000000000000000000abafe3da1406138dba10715ef4ebe22e4945341e) [staticcall]
+    │   │   │   │   │   │   ├─ [3689] DAO::hasPermission(ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7], ERC1967Proxy: [0x35B62715459cB60bf6dC17fF8cfe138EA305E7Ee], 0xbbdfd23f099d7ed9f535e0f97d2123efb1332b16e023b8359b3b879eaecd3c14, 0x89bb41456ae9a9e6cf7aef2c23773cf213c1b883714b48057c5a9571f555836523285f7a000000000000000000000000abafe3da1406138dba10715ef4ebe22e4945341e) [delegatecall]
+    │   │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   │   └─ ← [Return] true
+    │   │   │   │   │   ├─ [2797] ENSRegistryWithFallback::owner(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b) [staticcall]
+    │   │   │   │   │   │   └─ ← [Return] ERC1967Proxy: [0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7]
+    │   │   │   │   │   └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   │   │   └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   │   └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   │   └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    │   └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+    └─ ← [Revert] AlreadyRegistered(0xca3b3c5bc0b9c6b8f29393e0f3c097cc121daaa6c491c0ecbca0a9cc54e13f5b, 0x95D563382BeD5AcB458759EE05b27DF2CB019Cc7)
+
+
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+  PaymentsPluginSetup deployed at: 0x4F801759187e64873f08fA250d5393aC34f5bdff

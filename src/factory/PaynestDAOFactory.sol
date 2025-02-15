@@ -13,6 +13,7 @@ import {MultisigSetup as MultisigPluginSetup} from "@aragon/osx/plugins/governan
 import {createERC1967Proxy} from "@aragon/osx/utils/Proxy.sol";
 import {PermissionLib} from "@aragon/osx/core/permission/PermissionLib.sol";
 import {PaymentsPluginSetup} from "../setup/PaymentsPluginSetup.sol";
+import {PaymentsPlugin} from "../PaymentsPlugin.sol";
 
 /// @notice Parameters needed for each new DAO deployment
 struct DAOParameters {
@@ -28,7 +29,7 @@ struct Deployment {
     DAO dao;
     // Plugins
     Multisig multisigPlugin;
-    PaymentsPluginSetup paymentsPlugin;
+    PaymentsPlugin paymentsPlugin;
 }
 
 /// @notice A factory contract that can create multiple DAOs with payments and multisig plugins
@@ -36,11 +37,21 @@ contract PaynestDAOFactory {
     // Immutable state set at deployment
     address public immutable osxDaoFactory;
     PluginSetupProcessor public immutable pluginSetupProcessor;
+
+    // Multisig plugin state
     PluginRepo public immutable multisigPluginRepo;
-    uint8 public immutable multisigPluginRelease;
-    uint16 public immutable multisigPluginBuild;
+    uint8 public multisigPluginRelease; // Made mutable
+    uint16 public multisigPluginBuild; // Made mutable
+
+    // Payments plugin state
     PaymentsPluginSetup public immutable paymentsPluginSetup;
     PluginRepo public immutable paymentsPluginRepo;
+    uint8 public paymentsPluginRelease; // Added
+    uint16 public paymentsPluginBuild; // Added
+
+    // Events for version updates
+    event MultisigVersionUpdated(uint8 release, uint16 build);
+    event PaymentsVersionUpdated(uint8 release, uint16 build);
 
     /// @notice Initializes the factory with the core infrastructure addresses
     constructor(
@@ -50,7 +61,9 @@ contract PaynestDAOFactory {
         uint8 _multisigPluginRelease,
         uint16 _multisigPluginBuild,
         PaymentsPluginSetup _paymentsPluginSetup,
-        PluginRepo _paymentsPluginRepo
+        PluginRepo _paymentsPluginRepo,
+        uint8 _paymentsPluginRelease,
+        uint16 _paymentsPluginBuild
     ) {
         osxDaoFactory = _osxDaoFactory;
         pluginSetupProcessor = _pluginSetupProcessor;
@@ -59,6 +72,28 @@ contract PaynestDAOFactory {
         multisigPluginBuild = _multisigPluginBuild;
         paymentsPluginSetup = _paymentsPluginSetup;
         paymentsPluginRepo = _paymentsPluginRepo;
+        paymentsPluginRelease = _paymentsPluginRelease;
+        paymentsPluginBuild = _paymentsPluginBuild;
+    }
+
+    /// @notice Updates the multisig plugin version
+    /// @param newRelease The new release version
+    /// @param newBuild The new build version
+    function updateMultisigVersion(uint8 newRelease, uint16 newBuild) external {
+        // TODO: Add access control
+        multisigPluginRelease = newRelease;
+        multisigPluginBuild = newBuild;
+        emit MultisigVersionUpdated(newRelease, newBuild);
+    }
+
+    /// @notice Updates the payments plugin version
+    /// @param newRelease The new release version
+    /// @param newBuild The new build version
+    function updatePaymentsVersion(uint8 newRelease, uint16 newBuild) external {
+        // TODO: Add access control
+        paymentsPluginRelease = newRelease;
+        paymentsPluginBuild = newBuild;
+        emit PaymentsVersionUpdated(newRelease, newBuild);
     }
 
     /// @notice Creates a new DAO with the specified parameters
@@ -98,7 +133,10 @@ contract PaynestDAOFactory {
         // PAYMENTS PLUGIN
         {
             IPluginSetup.PreparedSetupData memory preparedPaymentsSetupData;
-            PluginRepo.Tag memory repoTag = PluginRepo.Tag(1, 1);
+            PluginRepo.Tag memory repoTag = PluginRepo.Tag(
+                paymentsPluginRelease,
+                paymentsPluginBuild
+            );
 
             // Prepare and install plugin
             (
@@ -201,10 +239,7 @@ contract PaynestDAOFactory {
         PluginRepo pluginRepo,
         PluginRepo.Tag memory repoTag,
         DAOParameters calldata parameters
-    )
-        internal
-        returns (PaymentsPluginSetup, IPluginSetup.PreparedSetupData memory)
-    {
+    ) internal returns (PaymentsPlugin, IPluginSetup.PreparedSetupData memory) {
         // Encode the payment managers for initialization
         bytes memory settingsData = abi.encode(parameters.paymentManagers);
 
@@ -219,7 +254,7 @@ contract PaynestDAOFactory {
                 )
             );
 
-        return (PaymentsPluginSetup(plugin), preparedSetupData);
+        return (PaymentsPlugin(plugin), preparedSetupData);
     }
 
     function applyPluginInstallation(

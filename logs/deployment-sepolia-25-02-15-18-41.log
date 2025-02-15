@@ -1,0 +1,99 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.68s
+Compiler run successful!
+Script ran successfully.
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+  PaymentsPluginSetup deployed at: 0x4F801759187e64873f08fA250d5393aC34f5bdff
+  PaymentsPlugin repo deployed at: 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e
+  PaynestDAOFactory deployed at: 0x31d0063E438B03894662c77Da101ABD3780826f8
+  
+Deployment Summary
+  ------------------
+  Chain ID: 11155111
+  PaymentsPluginSetup: 0x4F801759187e64873f08fA250d5393aC34f5bdff
+  PaymentsPlugin Repo: 0xABAfe3DA1406138dbA10715Ef4ebe22e4945341e
+  PaynestDAOFactory: 0x31d0063E438B03894662c77Da101ABD3780826f8
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 2.151273971 gwei
+
+Estimated total gas used for script: 8332313
+
+Estimated amount required: 0.017925088075124923 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (3) contracts
+Start verifying contract `0x4F801759187e64873f08fA250d5393aC34f5bdff` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x4F801759187e64873f08fA250d5393aC34f5bdff.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x4F801759187e64873f08fA250d5393aC34f5bdff.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x4F801759187e64873f08fA250d5393aC34f5bdff.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x4F801759187e64873f08fA250d5393aC34f5bdff.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `4fthfuspkvf8kn33qeuqwnqjfrxd7umds33g5rjhzsffxrk9tp`
+	URL: https://sepolia.etherscan.io/address/0x4f801759187e64873f08fa250d5393ac34f5bdff
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0x1046f993386cF98122927B525ba84552E0CfE4EC` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/PaymentsPlugin.sol:PaymentsPlugin] 0x1046f993386cF98122927B525ba84552E0CfE4EC.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `uxy6sgpitqxfhrashhkmxzudqc8bdp7pkjrqgmbmrmqvluap65`
+	URL: https://sepolia.etherscan.io/address/0x1046f993386cf98122927b525ba84552e0cfe4ec
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0x31d0063E438B03894662c77Da101ABD3780826f8` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+Constructor args: 0000000000000000000000007a62da7b56fb3bfcdf70e900787010bc4c9ca42e000000000000000000000000c24188a73dc09aa7c721f96ad8857b469c01dc9f0000000000000000000000009e7956c8758470de159481e5dd0d08f8b59217a2000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000020000000000000000000000004f801759187e64873f08fa250d5393ac34f5bdff000000000000000000000000abafe3da1406138dba10715ef4ebe22e4945341e00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000001
+
+Submitting verification for [src/factory/PaynestDAOFactory.sol:PaynestDAOFactory] 0x31d0063E438B03894662c77Da101ABD3780826f8.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `itpxrv3vffzevdhijysblm7zwcazrvsj686fznjwmk6vndrld4`
+	URL: https://sepolia.etherscan.io/address/0x31d0063e438b03894662c77da101abd3780826f8
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+All (3) contracts were verified!
+
+Transactions saved to: /Users/abuusama/repos/llama-osx/broadcast/DeployPaymentsPlugin.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /Users/abuusama/repos/llama-osx/cache/DeployPaymentsPlugin.s.sol/11155111/run-latest.json
+

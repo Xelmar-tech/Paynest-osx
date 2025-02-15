@@ -12,7 +12,7 @@ deploy-prodnet: export ETHERSCAN_API_KEY_PARAM = --etherscan-api-key $(ETHERSCAN
 
 # CONSTANTS
 TEST_COVERAGE_SRC_FILES:=$(wildcard test/*.sol test/**/*.sol script/*.sol script/**/*.sol src/**/*.sol)
-DEPLOY_SCRIPT:=script/DeployPaymentsPlugin.s.sol:DeployPaymentsPlugin
+DEPLOY_SCRIPT:=script/DeployPaynest.s.sol:DeployPaynest
 VERBOSITY:=-vvv
 SHELL:=/bin/bash
 
