@@ -1,0 +1,72 @@
+Compiling 104 files with Solc 0.8.17
+Solc 0.8.17 finished in 4.58s
+Compiler run successful!
+Script ran successfully.
+
+== Logs ==
+  Deploying from: 0xDAef100C116E6D8358Ac3987e40b8c33F0b2730f
+  PaymentsPluginSetup deployed at: 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe
+  PaymentsPlugin repo deployed at: 0xA9528E55d46E884b924336872225897aE6441a35
+  
+Deployment Summary
+  ------------------
+  Chain ID: 11155111
+  PaymentsPluginSetup: 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe
+  PaymentsPlugin Repo: 0xA9528E55d46E884b924336872225897aE6441a35
+
+## Setting up 1 EVM.
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 1.944115885 gwei
+
+Estimated total gas used for script: 5967859
+
+Estimated amount required: 0.011602209481340215 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (2) contracts
+Start verifying contract `0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+
+Submitting verification for [src/setup/PaymentsPluginSetup.sol:PaymentsPluginSetup] 0x43EEee7b3E70C6738B2f41A3dDfAC62322685fCe.
+Start verifying contract `0x87c0Ba71E56Acd369e6EC2438D9C647314f13047` deployed on sepolia
+Compiler version: 0.8.17
+Optimizations:    200
+
+Submitting verification for [src/PaymentsPlugin.sol:PaymentsPlugin] 0x87c0Ba71E56Acd369e6EC2438D9C647314f13047.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `bzqjz2qnh8vf1cdaq5mkgijp8vjwn6vndb2uwbxzhry3wsuatc`
+	URL: https://sepolia.etherscan.io/address/0x87c0ba71e56acd369e6ec2438d9c647314f13047
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+
+Transactions saved to: /Users/abuusama/repos/llama-osx/broadcast/DeployPaymentsPlugin.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /Users/abuusama/repos/llama-osx/cache/DeployPaymentsPlugin.s.sol/11155111/run-latest.json
+
