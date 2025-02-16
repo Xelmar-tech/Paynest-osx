@@ -189,17 +189,37 @@ forge test --match-test testFunctionName
 
 ### Permission System
 
-The plugin uses three permission levels:
+The plugin implements a dual-path permission model for maximum flexibility and security:
 
-1. `CREATE_PAYMENT_PERMISSION_ID`: Create new payments
+1. **Direct Path (Payment Managers)**
+
+   - Users with direct permissions on the payments plugin can create/manage payments without requiring multisig approval
+   - Ideal for day-to-day operations and trusted team members
+   - Permissions: `CREATE_PAYMENT_PERMISSION_ID`, `EXECUTE_PAYMENT_PERMISSION_ID`
+
+2. **Governance Path (Multisig)**
+   - The multisig acts as the admin of the payments plugin
+   - Can grant/revoke permissions to payment managers
+   - Can also create payments directly through proposals if needed
+   - Controls who has direct access to payment functions
+
+This dual-path system allows for:
+
+- Efficient daily operations through trusted payment managers
+- Strong governance control through the multisig
+- Flexibility to adapt to different organizational needs
+
+The plugin uses three core permission IDs:
+
+1. `CREATE_PAYMENT_PERMISSION_ID`: Create new payments/schedules/streams
 2. `EDIT_PAYMENT_PERMISSION_ID`: Modify existing payments
-3. `EXECUTE_PAYMENT_PERMISSION_ID`: Execute payments
+3. `EXECUTE_PAYMENT_PERMISSION_ID`: Execute due payments
 
-Permissions are managed through Aragon's permission system and can be granted to:
+These permissions can be granted to:
 
-- Individual addresses
-- Multisig contract
-- Other plugins
+- Individual addresses (payment managers)
+- The multisig contract
+- Other plugins or smart contracts
 
 ## Support
 

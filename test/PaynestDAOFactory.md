@@ -86,30 +86,6 @@
 ✓ Handles maximum member limits
 ✓ Validates all input parameters
 
-### State Management
-
-✓ Factory state remains consistent after failed deployments
-✓ Plugin state remains consistent after failed operations
-✓ Handles concurrent deployments
-✓ Handles network forks
-✓ Handles chain reorganizations
-
-### Gas Optimization
-
-✓ Deployment costs are optimized
-✓ Operation costs are reasonable
-✓ Batch operations are efficient
-✓ Storage slots are optimized
-✓ No unnecessary state changes
-
-### Recovery Scenarios
-
-✓ Can recover from failed deployments
-✓ Can recover from failed plugin operations
-✓ Can recover from permission issues
-✓ Can handle unexpected contract states
-✓ Provides upgrade paths for fixes
-
 ## Post-Deployment Payment Management
 
 ### Payment Scheduling
@@ -132,14 +108,6 @@
 ✓ New manager can create schedules
 ✓ New manager can execute payments
 ✓ Multiple managers can manage same schedule
-
-### Username Management
-
-✓ Payment manager can register usernames
-✓ Payment manager can update username addresses
-✓ Payment manager can create schedules for registered usernames
-✓ Removed manager cannot modify usernames
-✓ New manager can manage existing usernames
 
 ### Payment Execution Scenarios
 
