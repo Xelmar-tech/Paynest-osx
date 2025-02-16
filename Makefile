@@ -52,6 +52,10 @@ test: ##          Run unit tests, locally
 test-fork: ##     Run tests on a fork of the testnet
 	forge test --fork-url $(TESTNET_RPC_URL) $(VERBOSITY)
 
+.PHONY: test-factory-fork
+test-factory-fork: ##     Run PaynestDAOFactory tests on a fork of the testnet
+	forge test --fork-url $(TESTNET_RPC_URL) --match-contract PaynestDAOFactory $(VERBOSITY)
+
 test-coverage: report/index.html ## Generate an HTML coverage report under ./report
 	@which open > /dev/null && open report/index.html || echo -n
 	@which xdg-open > /dev/null && xdg-open report/index.html || echo -n
