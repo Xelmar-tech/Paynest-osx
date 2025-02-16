@@ -84,8 +84,16 @@ contract PaynestDAOFactoryTest is Test {
         vm.stopPrank();
     }
 
-    /// @notice Tests that the factory is initialized with correct values
-    function test_FactoryInitialization() public {
+    /// @notice Tests that the factory is initialized with correct addresses and settings
+    /// @dev This test verifies that:
+    /// 1. Factory is initialized with correct core protocol addresses
+    /// 2. Factory is initialized with correct plugin repositories
+    /// 3. Factory is initialized with correct plugin setups
+    /// Invariants:
+    /// - All addresses must be non-zero
+    /// - All addresses must match the provided configuration
+    /// - Plugin repositories must be properly linked
+    function test_FactoryInitialization() public view {
         assertEq(
             address(factory.osxDaoFactory()),
             daoFactory,
